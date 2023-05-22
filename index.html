@@ -9,7 +9,7 @@
   <div ng-controller="MyController">
     <h1>Nigerian Uniform Bank Account Number (NUBAN) Generator App</h1>
     <p>Input a valid bank code (issued by CBN) 
-        and a serial number of not more that 9 didgits in the form below to generate a new NUBAN</p>
+        and a serial number of not more that 9 didgits and not less than 1 didgit in the form below to generate a new NUBAN</p>
     <form ng-submit="submitForm()">
       <label for="bankCode">Bank Institution Code:</label>
       <input type="text" id="bankCode" ng-model="bankCode" required><br>
@@ -20,13 +20,22 @@
       <button type="submit">Generate NUBAN</button>
     </form>
 
-    <h2>Response:</h2>
-    <div class="res">
-    <p ng-if="response">{{ response }}</p>
-    <p ng-if="error">{{ error }}</p>  
+    <div>
+      <div ng-if="response">
+        <h3>Response From NUBAN Generator Backend:</h3> 
+            <div class="res">
+                <p>Bank Code: {{ response.bankCode }}</p>
+                <p>Serial Number: {{ response.serialNum }}</p>
+                <p>Generated NUBAN: {{ response.generatedNuban }}</p>
+                <p>Date and Time: {{ response.dateTime | date:'medium' }}</p>
+            </div>
+      </div>
+      <div ng-if="error">
+        <h2>Response From NUBAN Generator Backend:</h2> 
+        <p class="error">{{ error }}</p>
+      </div>
     </div>
-  </div>
-
+    
   <script>
     angular.module('myApp', [])
       .controller('MyController', ['$scope', '$http', function($scope, $http) {
@@ -38,12 +47,12 @@
 
           $http.post('http://localhost:8091/api/v1/nuban/generate', payload)
             .then(function(response) {
-              $scope.response = response.data.generatedNuban;
+              $scope.response = response.data;
               $scope.error = null; 
             })
             .catch(function(error) {
               $scope.response = null; 
-              $scope.error = 'Error: ' + error.data.exception; 
+              $scope.error = 'Error: ' + error.data.exception.split("::")[1].trim(); 
             });
         };
       }]);

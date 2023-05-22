@@ -1,13 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #c3b3b3;
-    padding: 20px;
+    background-color: #f7eaea;
+    padding: 50px;
   }
   
   h1 {
     margin-bottom: 20px;
   }
-  
+
   form {
     margin-bottom: 20px;
   }
@@ -17,7 +17,7 @@ body {
     margin-bottom: 10px;
   }
   
-  input[type="text"], .res {
+  input[type="text"] {
     width: 200px;
     padding: 5px;
   }
@@ -34,14 +34,26 @@ body {
     margin-bottom: 10px;
   }
   
-  .res {
-    background-color: #fff;
-    padding: 10px;
+  .res, .error {
     margin-bottom: 10px;
+    padding: 15px;
+    background-color: #f2f2f2;
     border: 1px solid #ccc;
+    width: fit-content; 
+    max-width: 400px; 
   }
   
   .res p {
-    font-weight: normal;
+    margin: 5px 0;
   }
+  
+  .res p:nth-child(3) {
+    font-weight: bold;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  
   
