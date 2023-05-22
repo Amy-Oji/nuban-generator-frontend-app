@@ -1,0 +1,1 @@
+# nuban-generator-frontend-app

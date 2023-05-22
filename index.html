@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS App</title>
+  <script src="node_modules/angular/angular.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div ng-controller="MyController">
+    <h1>Nigerian Uniform Bank Account Number (NUBAN) Generator App</h1>
+    <p>Input a valid bank code (issued by CBN) 
+        and a serial number of not more that 9 didgits in the form below to generate a new NUBAN</p>
+    <form ng-submit="submitForm()">
+      <label for="bankCode">Bank Institution Code:</label>
+      <input type="text" id="bankCode" ng-model="bankCode" required><br>
+
+      <label for="serial">Serial Number:</label>
+      <input type="text" id="serial" ng-model="serial" required><br>
+
+      <button type="submit">Generate NUBAN</button>
+    </form>
+
+    <h2>Response:</h2>
+    <div class="res">
+    <p ng-if="response">{{ response }}</p>
+    <p ng-if="error">{{ error }}</p>  
+    </div>
+  </div>
+
+  <script>
+    angular.module('myApp', [])
+      .controller('MyController', ['$scope', '$http', function($scope, $http) {
+        $scope.submitForm = function() {
+          var payload = {
+            bankCode: $scope.bankCode,
+            serialNum: $scope.serial
+          };
+
+          $http.post('http://localhost:8091/api/v1/nuban/generate', payload)
+            .then(function(response) {
+              $scope.response = response.data.generatedNuban;
+              $scope.error = null; 
+            })
+            .catch(function(error) {
+              $scope.response = null; 
+              $scope.error = 'Error: ' + error.data.exception; 
+            });
+        };
+      }]);
+  </script>
+</body>
+</html>
