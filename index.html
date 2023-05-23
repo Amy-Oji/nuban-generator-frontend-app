@@ -24,9 +24,10 @@
       <div ng-if="response">
         <h3>Response From NUBAN Generator Backend:</h3> 
             <div class="res">
-                <p>Bank Code: {{ response.bankCode }}</p>
-                <p>Serial Number: {{ response.serialNum }}</p>
-                <p>Generated NUBAN: {{ response.generatedNuban }}</p>
+                <p>Generated NUBAN: {{ response.generatedNUBAN }}</p>
+                <p>Serial Number: {{ response.serialNumber }}</p>
+                <p>Bank Code: {{ response.bankData.uniqueCbnBankCode }}</p>
+                <p>Bank Name: {{ response.bankData.bankName }}</p>
                 <p>Date and Time: {{ response.dateTime | date:'medium' }}</p>
             </div>
       </div>
@@ -42,7 +43,7 @@
         $scope.submitForm = function() {
           var payload = {
             bankCode: $scope.bankCode,
-            serialNum: $scope.serial
+            serialNumber: $scope.serial
           };
 
           $http.post('http://localhost:8091/api/v1/nuban/generate', payload)

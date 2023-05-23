@@ -47,7 +47,7 @@ body {
     margin: 5px 0;
   }
   
-  .res p:nth-child(3) {
+  .res p:first-child {
     font-weight: bold;
   }
   
