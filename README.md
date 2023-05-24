@@ -45,7 +45,7 @@ To get started with the NUBAN Generator Frontend App, follow these steps:
 
 5. The app will send a request to the NUBAN Generator Backend App with the provided bank code and serial number.
 
-6. If the backend responds with a generated NUBAN, it will be displayed below the "Response" heading.
+6. If the backend responds with a generated NUBAN, it will be displayed below the "Response From NUBAN Generator Backend:" heading.
 
-7. If there is an error, such as an invalid bank code, the error message will be displayed below the "Response" heading.
+7. If there is an error, such as an invalid bank code, the error message will be displayed below the "Response From NUBAN Generator Backend:" heading.
 
