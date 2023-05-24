@@ -24,11 +24,18 @@
       <div ng-if="response">
         <h3>Response From NUBAN Generator Backend:</h3> 
             <div class="res">
-                <p>Generated NUBAN: {{ response.generatedNUBAN }}</p>
-                <p>Serial Number: {{ response.serialNumber }}</p>
-                <p>Bank Code: {{ response.bankData.uniqueCbnBankCode }}</p>
-                <p>Bank Name: {{ response.bankData.bankName }}</p>
-                <p>Date and Time: {{ response.dateTime | date:'medium' }}</p>
+                <p>Generated NUBAN: </p>
+                <p>{{ response.generatedNUBAN }}</p>
+                <p>Serial Number: </p>
+                <p>{{ response.serialNumber }}</p>
+                <p>Bank Code: </p>
+                <p>{{ response.bankData.uniqueCbnBankCode }}</p>
+                <p>Bank Name: </p>
+                <p>{{ response.bankData.bankName }}</p>
+                <p>Date: </p>
+                <p>{{ response.dateTime | date:'mediumDate' }}</p>
+                <p>Time: </p> 
+                <p>{{ response.dateTime | date:'mediumTime' }}</p>               
             </div>
       </div>
       <div ng-if="error">
