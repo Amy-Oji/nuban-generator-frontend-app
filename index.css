@@ -1,8 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f7eaea;
+    background-color: #b4d8ac;
     padding: 50px;
   }
+  /* #f9e6e6; */
   
   h1 {
     margin-bottom: 20px;
@@ -35,21 +36,28 @@ body {
   }
   
   .res, .error {
-    margin-bottom: 10px;
-    padding: 15px;
-    background-color: #f2f2f2;
-    border: 1px solid #ccc;
+    margin: 20px;
+    padding: 20px;
+    /* background-color: rgb(232, 240, 254); */
+    border: 3px solid rgb(24, 21, 21);
     width: fit-content; 
     max-width: 400px; 
   }
   
   .res p {
     margin: 5px 0;
+    padding: 4px;
   }
   
-  .res p:first-child {
-    font-weight: bold;
-  }
+  /* .res p:first-child {
+    font-weight: bold;  #ebeff9
+  } */
+  
+  .res {
+    display: grid;
+    grid-template-columns: 150px auto;
+    grid-column-gap: 10px;
+  }  
   
   .error {
     color: red;
