@@ -7,43 +7,46 @@
 </head>
 <body>
   <div ng-controller="MyController">
-    <h1>Nigerian Uniform Bank Account Number (NUBAN) Generator App</h1>
-    <p>Input a valid bank code (issued by CBN) 
+    <div>
+      <h1>Nigerian Uniform Bank Account Number (NUBAN) Generator App</h1>
+      <p>Input a valid bank code (issued by CBN) 
         and a serial number of not more that 9 didgits and not less than 1 didgit in the form below to generate a new NUBAN</p>
-    <form ng-submit="submitForm()">
-      <label for="bankCode">Bank Institution Code:</label>
-      <input type="text" id="bankCode" ng-model="bankCode" required><br>
-
-      <label for="serial">Serial Number:</label>
-      <input type="text" id="serial" ng-model="serial" required><br>
-
-      <button type="submit">Generate NUBAN</button>
-    </form>
-
+    </div>
+    <div>
+      <form ng-submit="submitForm()">
+        <label for="bankCode">Bank Institution Code:</label>
+        <input type="text" id="bankCode" ng-model="bankCode" required><br>
+  
+        <label for="serial">Serial Number:</label>
+        <input type="text" id="serial" ng-model="serial" required><br>
+  
+        <button type="submit">Generate NUBAN</button>
+      </form>
+    </div>
     <div>
       <div ng-if="response">
         <h3>Response From NUBAN Generator Backend:</h3> 
-            <div class="res">
-                <p>Generated NUBAN: </p>
-                <p>{{ response.generatedNUBAN }}</p>
-                <p>Serial Number: </p>
-                <p>{{ response.serialNumber }}</p>
-                <p>Bank Code: </p>
-                <p>{{ response.bankData.uniqueCbnBankCode }}</p>
-                <p>Bank Name: </p>
-                <p>{{ response.bankData.bankName }}</p>
-                <p>Date: </p>
-                <p>{{ response.dateTime | date:'mediumDate' }}</p>
-                <p>Time: </p> 
-                <p>{{ response.dateTime | date:'mediumTime' }}</p>               
-            </div>
+        <div class="res">
+            <p>Generated NUBAN: </p>
+            <p>{{ response.generatedNUBAN }}</p>
+            <p>Serial Number: </p>
+            <p>{{ response.serialNumber }}</p>
+            <p>Bank Code: </p>
+            <p>{{ response.bankData.uniqueCbnBankCode }}</p>
+            <p>Bank Name: </p>
+            <p>{{ response.bankData.bankName }}</p>
+            <p>Date: </p>
+            <p>{{ response.dateTime | date:'mediumDate' }}</p>
+            <p>Time: </p> 
+            <p>{{ response.dateTime | date:'mediumTime' }}</p>               
+        </div>
       </div>
       <div ng-if="error">
-        <h2>Response From NUBAN Generator Backend:</h2> 
-        <p class="error">{{ error }}</p>
+          <h2>Response From NUBAN Generator Backend:</h2> 
+          <p class="error">{{ error }}</p>
       </div>
-    </div>
-    
+  </div>
+
   <script>
     angular.module('myApp', [])
       .controller('MyController', ['$scope', '$http', function($scope, $http) {
